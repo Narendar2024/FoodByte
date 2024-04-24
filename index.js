@@ -24,3 +24,7 @@ app.use('/uploads', express.static('uploads'));
 app.listen(PORT, () => {
     console.log(`Server is running successfully @ ${PORT}`);
 });
+
+app.get('/', (req, res) => {
+    res.send(`<h1>FoodByte</h1>`);
+});
