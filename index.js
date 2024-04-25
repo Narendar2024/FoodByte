@@ -3,12 +3,15 @@ const mongoose = require('mongoose');
 const dotEnv = require('dotenv');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 const vendorRoutes = require('./routes/vendorRoutes');
 const firmRoutes = require('./routes/firmRoutes');
 const productRoutes = require('./routes/productRoutes');
 const app = express();
 
 dotEnv.config();
+app.use(cors());
+
 const PORT = process.env.PORT || 4000;
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
