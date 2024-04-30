@@ -63,8 +63,8 @@ const getVendorById = async (req, res) => {
         if (!vendor) {
             return res.status(404).json({ error: "Vendor Not Found" });
         }
-        const vendorFirmId = vendor.firm[0]._id;
-        res.status(201).json({ vendorId, vendorFirmId, vendor });
+        const vendorFirmId = vendor.firm[0] ? vendor.firm[0]._id : null; // Check if vendor.firm[0] is defined
+        res.status(201).json({ vendorId, vendorFirmId });
         console.log(vendorFirmId);
     } catch (error) {
         console.error(error);
