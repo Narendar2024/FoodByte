@@ -48,7 +48,7 @@ const vendorLogin = async (req, res) => {
 
 const getAllVendors = async (req, res) => {
     try {
-        const vendors = await Vendor.find().populate("firm");
+        const vendors = await Vendor.find().populate('firm');
         res.json({ vendors });
     } catch (error) {
         console.error(error);
@@ -63,13 +63,31 @@ const getVendorById = async (req, res) => {
         if (!vendor) {
             return res.status(404).json({ error: "Vendor Not Found" });
         }
-        const vendorFirmId = vendor.firm[0] ? vendor.firm[0]._id : null; // Check if vendor.firm[0] is defined
-        res.status(201).json({ vendorId, vendorFirmId });
+        const vendorFirmId = vendor.firm[0] ? vendor.firm[0]._id : null;
+        res.status(200).json({ vendorId, vendorFirmId });
         console.log(vendorFirmId);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 };
+
+// const getVendorById = async (req, res) => {
+//     const vendorId = req.params.apple;
+
+//     try {
+//         const vendor = await Vendor.findById(vendorId).populate('firm');
+//         if (!vendor) {
+//             return res.status(404).json({ error: "Vendor not found" });
+//         }
+//         const vendorFirmId = vendor.firm[0]._id;
+//         res.status(200).json({ vendorId, vendorFirmId, vendor });
+//         console.log(vendorFirmId);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json({ error: "Internal server error" });
+//     }
+// };
+
 
 module.exports = { vendorRegister, vendorLogin, getAllVendors, getVendorById };
