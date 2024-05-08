@@ -8,7 +8,7 @@ const firmSchema = new mongoose.Schema({
     },
     area: {
         type: String,
-        required: true
+        required: true,
     },
     category: {
         type: [{
@@ -23,7 +23,8 @@ const firmSchema = new mongoose.Schema({
         }]
     },
     offer: {
-        type: String
+        type: String,
+
     },
     image: {
         type: String
@@ -34,10 +35,10 @@ const firmSchema = new mongoose.Schema({
     }],
     products: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Product"
+        ref: 'Product'
     }]
 });
 
-const Firm = mongoose.model("Firm", firmSchema);
+const Firm = mongoose.model('Firm', firmSchema);
 
 module.exports = Firm;
