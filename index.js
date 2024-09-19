@@ -7,10 +7,15 @@ const cors = require('cors');
 const vendorRoutes = require('./routes/vendorRoutes');
 const firmRoutes = require('./routes/firmRoutes');
 const productRoutes = require('./routes/productRoutes');
+const { METHODS } = require('http');
 const app = express();
 
 dotEnv.config();
-app.use(cors());
+app.use(cors({
+    origin: 'https://food-byte-dashboard-kjiveabzg-narender-korems-projects.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+}));
 
 const PORT = process.env.PORT || 4000;
 
