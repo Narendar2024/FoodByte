@@ -12,12 +12,13 @@ const app = express();
 dotEnv.config();
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "https://foodbyte.onrender.com",
-      "https://food-byte-dashboard-kjiveabzg-narender-korems-projects.vercel.app",
-    ],
+    // origin: [
+    //   "http://localhost:5173",
+    //   "http://localhost:5174",
+    //   "https://foodbyte.onrender.com",
+    //   "https://food-byte-dashboard-kjiveabzg-narender-korems-projects.vercel.app",
+    // ],
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization", "token"],
     credentials: true,
